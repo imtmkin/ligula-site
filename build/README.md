@@ -16,3 +16,8 @@ cd /Users/imaitomoki/work/maimai_os && for f in ligula/web/build/build*.py; do p
 - 書き出し先は各スクリプトの `SITE`(絶対パス)。**リポジトリを別の場所に置いたら直す。**
 - 直したら `site/README.md` のとおり `inspect.mjs` にかける。
 - **残り7枚の下層ページ**(`/news/`、`/past-projects/`、PR4枚)はまだ旧デザインで、ここでは組んでいない。
+
+## ビルドで再生成されないファイル
+
+`site/CNAME`（独自ドメイン）、`site/inquiry/index.html`（旧 URL の転送）、
+`site/robots.txt`、`site/_redirects` は手書き。`build*.py` は触らないので、消さないこと。

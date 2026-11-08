@@ -1,5 +1,9 @@
-# 旧 WordPress の URL を受ける（Netlify）
+# Netlify 用のリダイレクト定義。**いまの配信は GitHub Pages なので、このファイルは効いていない。**
+# Netlify に戻すときのために残してある。
 # ハッシュ（#以降）はサーバーに届かないので、リダイレクトでは扱えない。
-# 旧サイトの URL 一覧は未確認。Search Console か旧サーバーのログで拾って、ここに足す（plan.md 要確認16）。
+# 旧サイトの URL 一覧は未確認。Search Console か旧サーバーのログで拾って、ここに足す。
+#
+# GitHub Pages では、代わりに site/inquiry/index.html（手書き。ビルドで再生成されない）が
+# /inquiry → /#say の転送をしている。旧 URL を足すときは、同じやり方で1ページずつ置く。
 /inquiry/        /#say        301
 /inquiry         /#say        301

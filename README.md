@@ -2,8 +2,11 @@
 
 株式会社Ligula の自社サイト ligula.jp の中身。**ここが正本。**
 
-2026-11-08 に `maimai_os/ligula/web/` から切り出した。
-お知らせの管理画面（Decap CMS）をあとで足すには、サイトがリポジトリそのものである必要があるため。
+2026-11-08 に社内の作業用リポジトリから切り出した。
+お知らせの管理画面をあとで足すには、サイトがリポジトリそのものである必要があるため。
+
+**配信は GitHub Pages**（`.github/workflows/pages.yml` が `site/` を公開する）。
+`netlify.toml` は Netlify に戻すときのために残してある。いまは効いていない。
 
 ## 構成
 
@@ -28,12 +31,14 @@ cd build && python3 build.py && python3 build2.py && python3 build3.py && python
 
 ## 台帳はここには無い
 
-方針・移行手順・要確認は `maimai_os/ligula/web/plan.md`。
-料金の正本は `maimai_os/ligula/pricing.md`（**サイトの計算機 `site/estimate.js` の RATE と同じ数字にする。片方だけ直すとずれる**）。
-クレドは `maimai_os/ligula/credo.md`。
+方針・要確認・料金の正本・クレドは、社内の別リポジトリにある。**このリポジトリは public。**
+
+**サイトの計算機 `site/estimate.js` の `RATE` は、社内の料金台帳と同じ数字でなければならない。**
+片方だけ直すとずれる。金額を変えるときは、必ず台帳のほうから。
 
 ## 入れてはいけないもの
 
 - 顧客の連絡先・契約条件・見積額。
 - パスワード、API キー、トークン。
-- 公開対象から外した案件写真（`maimai_os/ligula/web/_unused-assets/` に置いてある）。
+- 公開対象から外した案件写真（社内の別リポジトリに置いてある）。
+- 社内の判断や検討の記録。**ここは public なので、外に出してよいものだけ。**
