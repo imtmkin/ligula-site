@@ -5,7 +5,7 @@ import os, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
 code = open(os.path.join(HERE, "build.py"), encoding="utf-8").read()
 head = code.split("# ---------------------------------------------------------------- 404")[0]
-ns = {}
+ns = {"__file__": os.path.join(os.path.dirname(os.path.abspath(__file__)), "build.py")}
 exec(compile(head, "build.py", "exec"), ns)
 HEAD, FOOT, SITE = ns["HEAD"], ns["FOOT"], ns["SITE"]
 

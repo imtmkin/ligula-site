@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 """たらればボードとイベント受付のページ。概算見積りつき。"""
 import os
-import importlib.util
 
-spec = importlib.util.spec_from_file_location(
-    "b", "/private/tmp/claude-501/-Users-imaitomoki-work-maimai-os/83212269-5ba6-4237-bc1f-b91fb7c3370a/scratchpad/build.py")
-
-SITE = "/Users/imaitomoki/work/maimai_os/ligula/web/site"
+HERE = os.path.dirname(os.path.abspath(__file__))
+SITE = os.path.normpath(os.path.join(HERE, "..", "site"))
 
 # build.py と同じ骨格を読み直す（実行はしない）
-src = open("/private/tmp/claude-501/-Users-imaitomoki-work-maimai-os/83212269-5ba6-4237-bc1f-b91fb7c3370a/scratchpad/build.py").read()
-ns = {}
+src = open(os.path.join(HERE, "build.py")).read()
+ns = {"__file__": os.path.join(HERE, "build.py")}
 exec(src.split("# ---------------------------------------------------------------- トップ")[0], ns)
 HEAD, FOOT, say = ns["HEAD"], ns["FOOT"], ns["say"]
 
@@ -157,7 +154,7 @@ event_fields = (num("guests", "来場者数の見込み", 300, "人", 0, 100000,
                 + num("hours", "1日の拘束時間", 8, "時間", 1, 16))
 event_opts = (sw("design", "受付の流れを設計する", "名簿、導線、必要な人数と道具を先に決めます", True)
               + sw("photo", "写真を記録する", "使ってよい範囲を先に決めてから撮ります")
-              + sw("gear", "受付机やサイネージを手配する", "当日の道具をこちらで用意します")
+              + sw("gear", "受付机まわりを手配する", "机・筆記具・案内の紙もの。画面はご用意ください")
               + sw("board", "たらればボードを付ける", "来場者の声をその場で集めます")
               + sw("report", "事後レポート", "来場者数、集まった声、写真を1枚にまとめます"))
 

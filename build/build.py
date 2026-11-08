@@ -2,7 +2,8 @@
 """ligula.jp の4ページを組む。ヘッダーとフッターは全ページ同一。"""
 import os, io
 
-SITE = "/Users/imaitomoki/work/maimai_os/ligula/web/site"
+HERE = os.path.dirname(os.path.abspath(__file__))
+SITE = os.path.normpath(os.path.join(HERE, "..", "site"))
 
 HEAD = '''<!doctype html>
 <html lang="ja">

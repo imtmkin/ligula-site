@@ -5,7 +5,7 @@ import os, importlib.util
 
 spec = importlib.util.spec_from_file_location(
     "build", os.path.join(os.path.dirname(os.path.abspath(__file__)), "build.py"))
-ns = {}
+ns = {"__file__": os.path.join(os.path.dirname(os.path.abspath(__file__)), "build.py")}
 code = open(spec.origin, encoding="utf-8").read()
 # build.py は読み込むだけでファイルを書き出すので、書き出し部分の手前までを実行する
 head = code.split("# ---------------------------------------------------------------- 404")[0]

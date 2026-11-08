@@ -25,7 +25,7 @@ var RATE = {
     photo: 25000,         /* 写真の記録 1日あたり */
     report: 20000,        /* 事後レポート */
     board: 20000,         /* たらればボードを付ける。ボードの基本料と同額にそろえる */
-    gear: 15000           /* 受付机・サイネージの手配 1日あたり */
+    gear: 15000           /* 受付机まわりの手配 1日あたり。画面(サイネージ)は含まない。2026-11-08 に「サイネージ」を外した */
   }
 };
 
@@ -92,7 +92,7 @@ var BUILD = {
       });
     }
     if (v.photo)  { rows.push({ name: '写真の記録', qty: v.days + '日', amount: r.photo * v.days }); }
-    if (v.gear)   { rows.push({ name: '受付机・サイネージの手配', qty: v.days + '日', amount: r.gear * v.days }); }
+    if (v.gear)   { rows.push({ name: '受付机まわりの手配', qty: v.days + '日', amount: r.gear * v.days }); }
     if (v.board)  { rows.push({ name: 'たらればボードを付ける', qty: '一式', amount: r.board }); }
     if (v.report) { rows.push({ name: '事後レポート', qty: '1本', amount: r.report }); }
 
