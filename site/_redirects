@@ -1,0 +1,5 @@
+# 旧 WordPress の URL を受ける（Netlify）
+# ハッシュ（#以降）はサーバーに届かないので、リダイレクトでは扱えない。
+# 旧サイトの URL 一覧は未確認。Search Console か旧サーバーのログで拾って、ここに足す（plan.md 要確認16）。
+/inquiry/        /#say        301
+/inquiry         /#say        301
