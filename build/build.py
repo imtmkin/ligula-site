@@ -413,6 +413,69 @@ web += '''
     </div>
   </section>
 
+  <section class="field" id="price">
+    <div class="wrap">
+      <h2 class="head rise">料金</h2>
+      <p class="lead rise" style="margin-top:16px;max-width:62ch">月額は低くしてあります。そのかわり、WebやSNSから生まれた売上の一部をいただきます。<b>生まれなかった月にいただくのは、月額だけです。</b></p>
+
+      <h3 class="step rise" style="margin-top:clamp(34px,5vh,60px)">毎月の運営</h3>
+      <div class="price rise">
+        <div class="price__it rise">
+          <p class="price__name">保守<span>月1〜2時間</span></p>
+          <p class="price__yen">10,000円<i>／月</i></p>
+          <p class="price__txt">点検、文章と写真の差し替え（月2件まで）、不具合の一次対応、サーバーと証明書の管理、月次の経営報告。</p>
+        </div>
+        <div class="price__it rise">
+          <p class="price__name">運営<span>月3時間</span></p>
+          <p class="price__yen">25,000円<i>／月</i></p>
+          <p class="price__txt">保守のすべてに加えて、追う数字の設計、ひと月の打ち手、やめる判断。</p>
+        </div>
+        <div class="price__it rise">
+          <p class="price__name">運営＋制作<span>月6時間</span></p>
+          <p class="price__yen">45,000円<i>／月</i></p>
+          <p class="price__txt">運営のすべてに加えて、ライティング（月1本）、撮影の手配、ページの追加（月1枚まで）。</p>
+        </div>
+      </div>
+
+      <h3 class="step rise" style="margin-top:clamp(34px,5vh,60px)">SNS運用（別立て）</h3>
+      <p class="note rise" style="margin-top:12px">毎月の運営には入れていません。SNSの運用は、それだけで成り立つ仕事なので、混ぜると中身が薄くなります。1アカウントにつきの金額で、2つ目からは20％引きです。</p>
+      <div class="price rise">
+        <div class="price__it rise">
+          <p class="price__name">ライト<span>月4本／月8時間</span></p>
+          <p class="price__yen">50,000円<i>／月</i></p>
+          <p class="price__txt">ひと月の計画、画像と文章の制作、予約投稿、コメントとメッセージの一次対応。</p>
+        </div>
+        <div class="price__it rise">
+          <p class="price__name">スタンダード<span>月8本＋ストーリーズ週2／月15時間</span></p>
+          <p class="price__yen">100,000円<i>／月</i></p>
+          <p class="price__txt">ライトのすべてに加えて、数字のレポートと、月1回の打ち合わせ。</p>
+        </div>
+        <div class="price__it rise">
+          <p class="price__name">フル<span>月12本＋動画2本／月26時間</span></p>
+          <p class="price__yen">180,000円<i>／月</i></p>
+          <p class="price__txt">スタンダードのすべてに加えて、リールの編集と、月1日の現地撮影。</p>
+        </div>
+      </div>
+
+      <div class="share rise">
+        <h3>月額は低く。<br>増えた分を、分けます。</h3>
+        <div class="share__body">
+        <p>WebやSNSを経由して生まれた売上、または一緒に立ち上げた新しい収益源の売上に対して、<b>10％</b>をいただきます。仕入れの重いお仕事では、売上ではなく<b>粗利の25％</b>で。<b>上限は設けません。</b>伸びた分はこちらも伸びる、という形にしたいからです。</p>
+        <p class="share__fine">何にかけるかは、契約の前に一緒に決めて、紙に書きます。数えられないものにはかけません。歩合は契約全体で一本で、Web運営とSNS運用で二重にはいただきません。</p>
+        </div>
+      </div>
+
+      <div class="pricefoot">
+        <div class="notice rise">
+          <b>入らないもの。</b>広告の出稿費、サーバー・ドメイン・有料ツールの利用料、撮影の交通費、催しの日の現地対応。かかった額のまま別途ご請求します（上乗せはしません）。金額はすべて税別です。
+        </div>
+        <div class="notice rise">
+          <b>まずは3か月。</b>打ち手が数字に出るまで3か月かかるので、そこまではお付き合いください。以降は1か月前にお知らせいただければ終われます。段は月単位で上げ下げできます。
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="field">
     <div class="wrap grid">
       <h2 class="step faq__head rise">よくある質問</h2>
@@ -424,7 +487,7 @@ web += '''
         <p><b>アカウントの名義はどうなりますか。</b>お客さまの名義で作り、権限をお預かりする形にしています。契約が終わればお預かりを外すだけです。</p>
         <p><b>やめたいときはどうすればいいですか。</b>その旨をお知らせください。アカウントと原稿、画像の一式をお渡しして終わります。</p>
         <p><b>急ぎの更新にも対応しますか。</b>営業日であれば当日中の着手を基本にしています。日付の決まっているものは先に予定へ組み込みます。</p>
-        <p><b>料金はいくらですか。</b>見る数字と範囲で変わるので、お話を聞いてからお出しします。毎月の定額と、催しの日の実費を分けて見積もります。</p>
+        <p><b>料金はいくらですか。</b><a href="#price">上の「料金」</a>に段ごとの月額を出しています。範囲が目安を超えるときは、その月だけ上の段に上げるか、単発でお見積もりします。催しの日の現地対応は別です。</p>
       </div>
     </div>
   </section>

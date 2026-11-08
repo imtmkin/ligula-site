@@ -492,3 +492,32 @@ ul{list-style:none;padding:0}
   .broke__list div{grid-template-columns:1fr;gap:10px}
   .broke__list dd{font-size:var(--s-small)}
 }
+
+/* ---------- 料金（Web運営） ---------- */
+.price{margin-top:clamp(20px,3vh,34px);display:grid;gap:4px}
+.price__it{display:grid;grid-template-columns:12em 11em 1fr;gap:clamp(16px,2vw,36px);
+  align-items:start;padding:clamp(22px,2.4vw,30px) clamp(14px,1.6vw,22px)}
+.price__it:nth-child(odd){background:var(--paper-2);border-radius:var(--r)}
+.price__name{font-size:var(--s-item);font-weight:900;letter-spacing:-.035em;line-height:1.2}
+.price__name span{display:block;margin-top:8px;font-size:var(--s-small);
+  font-weight:400;color:var(--ink-2);letter-spacing:0;line-height:1.6}
+.price__yen{font-size:var(--s-step);font-weight:900;letter-spacing:-.04em;line-height:1.1;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.price__yen i{font-style:normal;font-size:var(--s-small);font-weight:400;color:var(--ink-2);margin-left:4px}
+.price__txt{font-size:var(--s-body);line-height:1.85;max-width:52ch}
+.share{margin-top:clamp(28px,4vh,48px);background:var(--dark);color:#fff;
+  border-radius:var(--r);padding:clamp(26px,3.4vw,52px);
+  display:grid;grid-template-columns:minmax(220px,.85fr) 1.6fr;gap:clamp(22px,3.4vw,64px);align-items:start}
+.share h3{font-size:var(--s-step);font-weight:900;letter-spacing:-.04em;line-height:1.3;color:var(--gold)}
+.share__body p:first-child{margin-top:0}
+.share p{margin-top:16px;font-size:var(--s-body);line-height:1.95;color:#C9D0DC;max-width:62ch}
+.share p b{color:#fff}
+.share__fine{margin-top:14px;font-size:var(--s-small);line-height:1.8;color:#8E97A6;max-width:62ch}
+.pricefoot{margin-top:clamp(24px,3.4vh,40px);display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(16px,1.8vw,28px)}
+@media (max-width:860px){
+  .price__it{grid-template-columns:1fr;gap:8px}
+  .share{grid-template-columns:1fr;gap:16px}
+  .share h3 br{display:none}
+  .pricefoot{grid-template-columns:1fr}
+}
