@@ -1,0 +1,38 @@
+# ligula.jp を静的サイトとして配信するための .htaccess（Xserver / Apache）
+# 置き場所: public_html/.htaccess （先頭のドットを付けて置く）
+# WordPress の書き換えは使わない。WordPress 本体は public_html の外に退避してある。
+
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # http → https
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # www あり → なし（正規の URL は https://ligula.jp/）
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+# GitHub Pages では付けられなかったぶん、ここでは付ける
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# 画像と CSS/JS はしばらく持たせる。HTML は持たせない（直しがすぐ出るように）
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
