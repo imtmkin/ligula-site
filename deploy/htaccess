@@ -6,7 +6,10 @@
 #   （app / coaching / crypto / doc / liguradio / mogula / search / task）。
 #   消さないこと。送信スクリプトは --delete を使わない設計にしてある。
 
-DirectoryIndex index.html
+# この設定はサブドメインのフォルダにも受け継がれる。
+# index.php を使っているサブドメイン（liguradio）があるので、必ず両方書くこと。
+# index.html だけにすると、そちらが 403 になる。
+DirectoryIndex index.html index.php index.htm
 
 <IfModule mod_rewrite.c>
   RewriteEngine On

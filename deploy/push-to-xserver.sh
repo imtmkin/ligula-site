@@ -44,7 +44,9 @@ echo "送り先: $USER@$HOST:$DOCROOT"
 # --delete は使わない。public_html にサブドメイン8つが同居しているため。
 # 送るのは site/ の中身だけ。あちらにしか無いものには一切触らない。
 # 公開しなくてよいリポジトリ用のファイルも送らない。
-rsync -rlptz $DRY \
+# --chmod は必須。手元のファイルが 600 だと、そのまま送られて Web から読めず 403 になる。
+# （2026-11-08 に logo.png がこれで表示されなかった）
+rsync -rlptz $DRY --chmod=D755,F644 \
   --exclude '.DS_Store' \
   --exclude '.taste-skill/' \
   --exclude '*.ligula.jp/' \
