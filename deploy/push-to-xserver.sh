@@ -24,6 +24,12 @@ SRC="$HERE/site/"
 # .htaccess は deploy/htaccess を名前を変えて送る
 cp "$HERE/deploy/htaccess" "$SRC/.htaccess"
 
+# 権限を揃える。手元が 600 のファイルがあると、そのまま送られて Web から読めず 403 になる。
+# （2026-11-08 に logo.png がこれで表示されなかった）
+# macOS の rsync は --chmod に対応していないので、送る前に手元で直す。
+find "$SRC" -type d -exec chmod 755 {} +
+find "$SRC" -type f -exec chmod 644 {} +
+
 SSH="ssh -p $PORT -i $KEY"
 
 DRY="--dry-run"
@@ -46,7 +52,7 @@ echo "送り先: $USER@$HOST:$DOCROOT"
 # 公開しなくてよいリポジトリ用のファイルも送らない。
 # --chmod は必須。手元のファイルが 600 だと、そのまま送られて Web から読めず 403 になる。
 # （2026-11-08 に logo.png がこれで表示されなかった）
-rsync -rlptz $DRY --chmod=D755,F644 \
+rsync -rlptz $DRY \
   --exclude '.DS_Store' \
   --exclude '.taste-skill/' \
   --exclude '*.ligula.jp/' \
