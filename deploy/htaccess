@@ -1,20 +1,30 @@
 # ligula.jp を静的サイトとして配信するための .htaccess（Xserver / Apache）
 # 置き場所: public_html/.htaccess （先頭のドットを付けて置く）
 # WordPress の書き換えは使わない。WordPress 本体は public_html の外に退避してある。
+#
+# 【注意】この public_html には、サブドメイン8つのフォルダが同居している
+#   （app / coaching / crypto / doc / liguradio / mogula / search / task）。
+#   消さないこと。送信スクリプトは --delete を使わない設計にしてある。
 
 DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # http → https
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  # http → https（旧 .htaccess と同じ書き方。Xserver は nginx で SSL を終端するので
+  # REDIRECT_STATUS の条件を付けないとループすることがある）
+  RewriteCond %{HTTPS} !on
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
   # www あり → なし（正規の URL は https://ligula.jp/）
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 </IfModule>
+
+# 旧サイトから引き継ぐ転送（2026-11-08 時点の .htaccess にあったもの）
+Redirect permanent /ligula_search https://search.ligula.jp
 
 ErrorDocument 404 /404.html
 

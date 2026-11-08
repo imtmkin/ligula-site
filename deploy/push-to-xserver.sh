@@ -26,23 +26,31 @@ cp "$HERE/deploy/htaccess" "$SRC/.htaccess"
 
 SSH="ssh -p $PORT -i $KEY"
 
-# 安全装置: 送り先にまだ WordPress が残っていたら止める。
-# --delete で消してしまうため、先に退避とバックアップを済ませること。
-if $SSH "$USER@$HOST" "ls $DOCROOT/wp-config.php $DOCROOT/wp-includes" >/dev/null 2>&1; then
-  echo "止めました。送り先にまだ WordPress があります: $DOCROOT"
-  echo "先にバックアップを取り、WordPress を public_html の外へ移してから、もう一度。"
-  exit 1
-fi
-
 DRY="--dry-run"
 [ "${1:-}" = "--go" ] && DRY=""
+
+# 安全装置: 本当に送るときだけ、送り先にまだ WordPress が残っていないか見る。
+# WordPress の index.php が残っていると、そちらが先に表示されてしまう。
+if [ -z "$DRY" ] && $SSH "$USER@$HOST" "ls $DOCROOT/wp-config.php" >/dev/null 2>&1; then
+  echo "止めました。送り先にまだ WordPress があります: $DOCROOT"
+  echo "先にバックアップを取り、WordPress を public_html の外へ移してから、もう一度。"
+  echo "（サブドメイン8つのフォルダは消さないこと）"
+  exit 1
+fi
 
 echo "送り先: $USER@$HOST:$DOCROOT"
 [ -n "$DRY" ] && echo "（下見だけ。実際に送るには --go を付ける）"
 
-rsync -rlptz --delete $DRY \
+# --delete は使わない。public_html にサブドメイン8つが同居しているため。
+# 送るのは site/ の中身だけ。あちらにしか無いものには一切触らない。
+# 公開しなくてよいリポジトリ用のファイルも送らない。
+rsync -rlptz $DRY \
   --exclude '.DS_Store' \
   --exclude '.taste-skill/' \
+  --exclude '*.ligula.jp/' \
+  --exclude 'CNAME' \
+  --exclude '_redirects' \
+  --exclude 'README.md' \
   -e "$SSH" \
   "$SRC" "$USER@$HOST:$DOCROOT/"
 
