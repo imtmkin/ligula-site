@@ -70,7 +70,7 @@ var BUILD = {
     if (v.report)    { rows.push({ name: '事後レポート', qty: '1本', amount: r.report }); }
     if (v.exhibitor) { rows.push({ name: '出展者に渡す結果ページ', qty: '1本', amount: r.exhibitor }); }
 
-    var notes = ['モニターは主催者のご用意が前提です。機材の貸し出しは含みません。'];
+    var notes = ['モニターは主催者のご用意が前提です。機材の貸し出しも手配の代行もしていませんが、何をどこで借りればよいかのご相談には、費用をいただかずにお答えします。'];
     if (v.onsite) { notes.push('現地までの交通費は実費で別途いただきます。'); }
     return { rows: rows, notes: notes };
   },
